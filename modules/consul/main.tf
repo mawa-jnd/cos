@@ -2,11 +2,13 @@
 # DEPLOY THE CONSUL SERVER NODES
 # ---------------------------------------------------------------------------------------------------------------------
 module "consul_servers" {
-  source = "git::https://github.com/hashicorp/terraform-aws-consul.git//modules/consul-cluster?ref=v0.7.3"
+  source = "git::https://github.com/mawa-jnd/terraform-aws-consul.git//modules/consul-cluster?ref=termination-protection"
 
   cluster_name  = var.cluster_tag_value
   cluster_size  = var.num_servers
   instance_type = var.instance_type
+
+  protect_from_scale_in = var.protect_from_scale_in
 
   # The EC2 Instances will use these tags to automatically discover each other and form a cluster
   cluster_tag_key   = var.cluster_tag_key

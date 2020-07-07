@@ -41,6 +41,7 @@ module "consul" {
   num_servers             = var.consul_num_servers
   instance_type           = var.consul_instance_type
   ssh_key_name            = var.ssh_key_name
+  protect_from_scale_in   = var.consul_protect_from_scale_in
 }
 
 #### DC: PUBLIC-SERVICES ###################################################
@@ -188,6 +189,7 @@ module "nomad" {
   ssh_key_name            = var.ssh_key_name
   node_scaling_cfg        = var.nomad_server_scaling_cfg
   unique_postfix          = var.unique_postfix
+  protect_from_scale_in   = var.nomad_protect_from_scale_in
 }
 
 module "sgrules" {

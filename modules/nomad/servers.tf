@@ -10,7 +10,7 @@ locals {
 # DEPLOY THE NOMAD SERVER NODES
 # ---------------------------------------------------------------------------------------------------------------------
 module "nomad_servers" {
-  source = "git::https://github.com/hashicorp/terraform-aws-nomad.git//modules/nomad-cluster?ref=v0.5.0"
+  source = "git::https://github.com/mawa-jnd/terraform-aws-nomad.git//modules/nomad-cluster?ref=termination-protection"
 
   cluster_name                = local.cluster_name
   cluster_tag_value           = local.cluster_name
@@ -22,6 +22,7 @@ module "nomad_servers" {
   user_data                   = data.template_file.user_data_server.rendered
   ssh_key_name                = var.ssh_key_name
   associate_public_ip_address = false
+  protect_from_scale_in       = var.protect_from_scale_in
 
   # You should typically use a fixed size of 3 or 5 for your Nomad server cluster
   min_size         = local.min

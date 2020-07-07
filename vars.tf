@@ -379,6 +379,13 @@ variable "map_bucket_name" {
   default     = ""
 }
 
+variable "nomad_protect_from_scale_in" {
+  description = "(Optional) Allows setting instance protection. The autoscaling group will not select instances with this setting for termination during scale in events."
+  type        = bool
+  default     = false
+}
+
+
 #### [Consul] Optional Variables ##################################################################
 variable "consul_num_servers" {
   description = "The number of Consul server nodes to deploy. We strongly recommend using 3 or 5."
@@ -388,6 +395,12 @@ variable "consul_num_servers" {
 variable "consul_instance_type" {
   description = "The instance type for all consul server nodes."
   default     = "t2.micro"
+}
+
+variable "consul_protect_from_scale_in" {
+  description = "(Optional) Allows setting instance protection. The autoscaling group will not select instances with this setting for termination during scale in events."
+  type        = bool
+  default     = false
 }
 
 variable "ecr_repositories" {

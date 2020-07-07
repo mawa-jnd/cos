@@ -72,3 +72,9 @@ variable "node_scaling_cfg" {
     "desired_capacity" = 3
   }
 }
+
+variable "protect_from_scale_in" {
+  description = "(Optional) Allows setting instance protection. The autoscaling group will not select instances with this setting for termination during scale in events."
+  type        = bool
+  default     = false
+}
